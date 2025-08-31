@@ -6,11 +6,13 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
 
-  const bearer = req.headers.authorization?.split(" ")[1] || "";
-  const REQUIRED = process.env.DEEP_TOKEN; // optional
-  if (REQUIRED && bearer !== REQUIRED) {
-    return res.status(401).json({ error: "Unauthorized" });
-  }
+const bearer = req.headers.authorization?.split(" ")[1]
+            || req.query.token
+            || "";
+const REQUIRED = process.env.DEEP_TOKEN;
+if (REQUIRED && bearer !== REQUIRED) {
+  return res.status(401).json({ error: "Unauthorized" });
+}
 
   // ---- Prompt (edit freely) ----
   const PROMPT = `
