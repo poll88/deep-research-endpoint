@@ -1,0 +1,10 @@
+{
+  "name": "deep-research-endpoint",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=18.17" },
+  "dependencies": {},
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}
